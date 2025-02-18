@@ -1,0 +1,48 @@
+QDL
+What is OOP?
+- Object Oriented Programming 
+ // object
+    - attribute (something about the object)
+    - Methods  (behavior of the object)
+    - class
+
+ // structure
+ // pattern or model. (design)
+
+ Product
+ - name
+ - price
+ - quantity
+ - description
+
+// object initialization. 
+1. 
+product1 = {
+    name:'blueband',
+    price: 2500,
+    quantity: '1kg'
+}
+
+// Methods
+
+// decorators
+What is => Used to modify the behaviors of a method or property without changing the actual code.
+
+// Types
+1. classMethod
+2. staticMethod
+3. property
+ - makes a method callable like an attribute
+4. custom decorators
+- 
+
+// Object inheritance
+= A parent class (Product)
+= A child class   (DiscountProduct)
+
+// How to set up a child class
+// super()
+
+1. it inherits both attributes and Methods
+2. it can override an inherited method
+3. it can have attributes and methods that are unique to just the child class.
