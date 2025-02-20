@@ -2,22 +2,24 @@ class User:
 
     # greeting = "Umesalimiwa na User"
 
-    def __init__(self, name,password):
+    def __init__(self, name_received,password_received):
         print(self, "has been initialized")
-        self.name = name
-        self.password = password
+        self.name = name_received #creating a new attribute and asigning a value
+        self.pswd = password_received
+        # instance.attribute = value
         pass
 
     @property
-    def password(self):
-        return self._password
+    def pswd(self):
+        return self.__password
     
-    @password.setter
-    def password(self,new_password):
+    @pswd.setter
+    def pswd(self,new_password):
         if type(new_password) != str:
-            return("Password can only be string")
+            # print("here")
+            raise ValueError("Password can only be string")
         else:
-            self._password = new_password
+            self.__password = new_password
         return "Password Changed"
 
     # def get_password(self):
@@ -54,8 +56,11 @@ class User:
         print("Counting total users")
         pass
     pass
-user1 = User("Mercy",1234) #object or instance
-user2 = User("Jafaar",123)
+
+if __name__ == "__main__":
+
+    user1 = User() #object or instance
+    user2 = User("Jafaar",123)
 #user1 => Instance
 # User => class
 # user1.login()
