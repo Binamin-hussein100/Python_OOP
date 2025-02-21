@@ -1,0 +1,33 @@
+User, Posts, Comments, Tags, UserProfile
+
+A User has many posts
+A Post has many Comments
+A Comment belongs to a User
+A Comment belongs to a Post
+A Post has many tags
+A Tag belongs to many posts
+A User has one UserProfile
+A USerProfile, belongs to one user
+
+- 1 class that would contain the things that each class will need
+
+- Baseclass
+  - id
+  - save()
+
+- User 
+ - username, email, post []
+
+ - id
+ - ip_address
+ - username
+ - email
+
+ - def get_email
+    - get me the email
+    - accessible as an attribute
+
+- Post
+    - id, ip_address, title, content, user, comments, tags
+    - The number of posts in my app. 
+    - get a list of all posts (class methods)

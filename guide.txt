@@ -46,3 +46,18 @@ What is => Used to modify the behaviors of a method or property without changing
 1. it inherits both attributes and Methods
 2. it can override an inherited method
 3. it can have attributes and methods that are unique to just the child class.
+
+- setting up and identifying the base_class
+- inherit the class
+- set up the child class
+
+// instance attributes and class attributes
+
+// instance methods and class Methods
+ - 1. self => instance method
+   2. cls => class method
+
+// Access modifiers
+// protected => 
+   public
+   private
