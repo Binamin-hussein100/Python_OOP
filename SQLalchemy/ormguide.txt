@@ -1,0 +1,25 @@
+1. SQLalchemy set up and ORM Basics
+2. CRUD on an sqlalchemy model
+3. Migrations and alembic
+4. Relationships using sqlalchemy
+
+Users, products and orders
+
+pre-setup
+- pipenv install sqlalchemy alembic psycopg2
+
+1. installation and imports
+2. database set up
+3. ORM BASE
+4. setting up the class
+
+Migrations
+1. Schema change (+-)
+2. alembic
+    - initialize
+    - add the dbUrl in alembic.ini 
+    - migrations/env set up 
+      - import Base from our file
+      - set target_metadata tp Base.metadata
+3. Generate Migrations
+4. Apply Migrations - alembic upgrade head
