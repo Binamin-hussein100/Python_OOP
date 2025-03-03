@@ -8,6 +8,19 @@ engine = create_engine(DATABASE_URL)
 Base = declarative_base()
 
 
+class Profile(Base):
+    __tablename__ = "profiles"
+
+    id = Column(Integer, primary_key=True)
+    address = Column(String(50))
+    phone = Column(String(20))
+
+    # relationship
+    user_id = Column(Integer, ForeignKey('users.id'), unique=True)    
+    user = relationship("User", back_populates="profile")
+
+
+
 # user class
 class User(Base):
     __tablename__ = "users"
@@ -16,6 +29,25 @@ class User(Base):
     name = Column(String(50), nullable=False)
     email = Column(String(100), unique=True , nullable=False)
     nationality  = Column(String(50))
+    # relationships
+    profile = relationship("Profile", back_populates="user", uselist=False)
+    orders = relationship("Order", back_populates="user")
+
+
+class Order(Base):
+    __tablename__ = "orders"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship("User", back_populates="orders")
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True)
+    name  = Column(String(50), nullable=False)
+    price = Column(Integer, nullable=False)
+
 
 
 # creating tables
