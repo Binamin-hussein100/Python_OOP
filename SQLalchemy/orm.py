@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer,String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer,String,Table, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 
 DATABASE_URL= 'sqlite:///inventory.db'
@@ -7,6 +7,12 @@ engine = create_engine(DATABASE_URL)
 # ORM BASE
 Base = declarative_base()
 
+
+order_products = Table(
+    "order_products", Base.metadata,
+    Column('order_id', Integer, ForeignKey("orders.id")),
+    Column('product_id', Integer, ForeignKey("products.id"))
+)
 
 class Profile(Base):
     __tablename__ = "profiles"
@@ -40,6 +46,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", back_populates="orders")
+    products = relationship("Product", secondary=order_products, back_populates="orders")
 
 class Product(Base):
     __tablename__ = "products"
@@ -47,8 +54,14 @@ class Product(Base):
     id = Column(Integer, primary_key=True)
     name  = Column(String(50), nullable=False)
     price = Column(Integer, nullable=False)
+    orders = relationship("Order", secondary=order_products, back_populates="products")
 
+class Cashout(Base):
+    __tablename__ = "cashouts"
 
+    id = Column(Integer, primary_key=True)
+    amount  = Column(String(50), nullable=False)
+    mode  = Column(String(50))
 
 # creating tables
 Base.metadata.create_all(engine)

@@ -17,11 +17,13 @@ Migrations
 1. Schema change (+-)
 2. alembic
     - initialize
+      - alembic init migrations
     - add the dbUrl in alembic.ini 
     - migrations/env set up 
       - import Base from our file
-      - set target_metadata tp Base.metadata
+      - set target_metadata to Base.metadata
 3. Generate Migrations
+  - alembic revision --autogenerate -m "update cashout table"
 4. Apply Migrations - alembic upgrade head
 
 sqlalchemy Relationships & migrations
@@ -34,6 +36,7 @@ one-to-many
 - 1-to-1 without the unique keyword.
 
 many-to-many
+ - Orders and products
 
 User
  - Profile => One-to-one
